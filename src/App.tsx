@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import CartItems from './components/CartItems';
+import CartTotal from './components/CartTotal';
 
 function App() {
 
@@ -489,10 +490,6 @@ function App() {
 
   const response = useState(fakeAPI);
 
-  const total = fakeAPI.items.reduce(function (prev, cur) {
-    return prev + cur.sellingPrice;
-  }, 0)
-
   return (
     <main className="container">
       <header className="header">
@@ -502,12 +499,7 @@ function App() {
         <CartItems response={response[0]} />
       </div>
       <div className="total">
-        <div id="total-text">
-          <p>Total</p>
-          <p>R$</p>
-          {/* <p>R$ {parsedValue(total)}</p> */}
-        </div>
-        {total >= 1000 ? <div id="free-shipping"><p>Parabéns, sua compra tem frete grátis!</p></div> : null}
+        <CartTotal response={response[0]} />
       </div>
       <footer className="footer">
         <button>Finalizar compra</button>

@@ -1,16 +1,10 @@
 import React from 'react';
 import { IProduct } from '../../types';
+import { formatValue } from '../../utils/formatValue';
 
 const CartItems = (prop: any) => {
 
   const { items } = prop.response;
-
-  const parsedValue = (n: number) => {
-    const dividedN = n / 100;
-    const result = dividedN.toFixed(2).replace('.', ',');
-
-    return result;
-  }
 
   return (
     <>
@@ -22,8 +16,8 @@ const CartItems = (prop: any) => {
                 <img src={item.imageUrl} alt={item.name} /></div>
               <div id="description-container">
                 <p className="title">{item.name}</p>
-                <p className="small"> R$ {parsedValue(item.price)}</p>
-                <p className="price">R$ {parsedValue(item.sellingPrice)}</p>
+                <p className="small"> R$ {formatValue(item.price)}</p>
+                <p className="price">R$ {formatValue(item.sellingPrice)}</p>
               </div>
             </li>
           </ul>
