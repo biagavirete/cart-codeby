@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { IProduct } from './types';
+import CartItems from './components/CartItems';
 
 function App() {
 
@@ -487,16 +487,7 @@ function App() {
     }
   }
 
-
   const response = useState(fakeAPI);
-  console.log(response[0]);
-
-  const parsedValue = (n: number) => {
-    const dividedN = n / 100;
-    const result = dividedN.toFixed(2).replace('.', ',');
-
-    return result;
-  }
 
   const total = fakeAPI.items.reduce(function (prev, cur) {
     return prev + cur.sellingPrice;
@@ -508,27 +499,13 @@ function App() {
         <h2>Meu carrinho</h2>
       </header>
       <div className="content">
-        {response[0].items.map((item: IProduct) => (
-          <div id="item-content">
-            <ul key={item.id}>
-              <li>
-                <div id="image-container">
-                  <img src={item.imageUrl} alt={item.name} /></div>
-                <div id="description-container">
-                  <p className="title">{item.name}</p>
-                  <p className="small"> R$ {parsedValue(item.price)}</p>
-                  <p className="price">R$ {parsedValue(item.sellingPrice)}</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        ))}
-
+        <CartItems response={response[0]} />
       </div>
       <div className="total">
         <div id="total-text">
           <p>Total</p>
-          <p>R$ {parsedValue(total)}</p>
+          <p>R$</p>
+          {/* <p>R$ {parsedValue(total)}</p> */}
         </div>
         {total >= 1000 ? <div id="free-shipping"><p>Parabéns, sua compra tem frete grátis!</p></div> : null}
       </div>
