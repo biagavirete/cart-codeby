@@ -50,6 +50,7 @@ main .container .header h2 {
 .content #item-content {
   display: flex;
   flex-direction: row;
+  align-content: center;
 }
 
 .content #item-content li {
@@ -62,13 +63,21 @@ main .container .header h2 {
   align-items: flex-start;
 }
 
-.content #item-content li img {
-  width: 100px;
+.content #item-content #image-container {
+  width: 150px;
+  height: 150px;
+  overflow:hidden;
   border: 2px solid #D6D6D6;
+  margin-right: 10px;
+}
+
+.content #item-content li img {
+  width: 130px;
+  padding-left: 12px;
 }
 
 .content #item-content #description-container {
-  padding: 10px;
+  padding: 35px 10px;
 }
 
 .content #item-content #description-container .title {
